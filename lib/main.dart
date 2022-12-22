@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:barcode_scan2/barcode_scan2.dart';
-import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -17,6 +16,7 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }
@@ -110,7 +110,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("ZOZAIN QR"),
+          title: const Text("ZOZAIN QR"),
         ),
         body: Container(
           alignment: Alignment.center,
@@ -120,7 +120,7 @@ class _HomeState extends State<Home> {
                 width: double.infinity,
                 height: 350,
                 child: IconButton(
-                  icon: Icon(MaterialCommunityIcons.qrcode_scan),
+                  icon: const Icon(MaterialCommunityIcons.qrcode_scan),
                   iconSize: 200,
                   onPressed: connectionCheck() ? null :  () async {
                     ScanResult codeSanner = await BarcodeScanner.scan(
@@ -182,8 +182,8 @@ class _HomeState extends State<Home> {
               Container(
                 width: double.infinity,
                 height: 50,
-                padding: EdgeInsets.all(10),
-                child: Text(
+                padding: const EdgeInsets.all(10),
+                child: const Text(
                     "Please Scan the QR Code",
                     textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w900),
@@ -193,11 +193,11 @@ class _HomeState extends State<Home> {
                 width: double.infinity,
                 height: 20,
                 color: isoffline ? Colors.red : Colors.lightGreen,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                   isoffline ? "Device is Offline" : "Device is Online",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 10, color: Colors.white),
+                  style: const TextStyle(fontSize: 10, color: Colors.white),
                 ),
               )
             ],
